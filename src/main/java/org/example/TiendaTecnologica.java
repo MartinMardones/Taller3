@@ -31,9 +31,10 @@ public class TiendaTecnologica {
     }
 
     private List<Cliente> clientes;
+    private List<ObjetoTecnologico> objetoTecnologicos;
 
     public TiendaTecnologica(){
-        this.clientes = new ArrayList<>();
+        this.objetoTecnologicos = new ArrayList<>();
     }
 
     public boolean agregarCliente(String nombre, String apellido, String correoElectronico, String numeroTelefonico, String estadoCivil, String ciudad){
@@ -77,7 +78,7 @@ public class TiendaTecnologica {
     public boolean agregarObjetoTecnologico(String marca, String memoriaRam, String memoriaAlmacenamiento, String procesador, String modelo, int año, String precio, int stock){
         if(buscarObjetoTecnologico(marca, precio) == null) {
             ObjetoTecnologico objetoTecnologico = new ObjetoTecnologico (marca, memoriaRam, memoriaAlmacenamiento, procesador, modelo, año, precio, stock);
-            this.objetoTecnologico.add(objetoTecnologico);
+            this.objetoTecnologicos.add(objetoTecnologico);
             return true;
         }
         else{
@@ -85,8 +86,8 @@ public class TiendaTecnologica {
         }
     }
     public boolean agregarObjetoTecnologico(ObjetoTecnologico objetoTecnologico){
-        if(buscarObjetoTecnologico(objetoTecnologico.getMarca(),objetoTecnologico.getPrecio()) == null){
-            this.objetoTecnologico.add(objetoTecnologico);
+        if(buscarObjetoTecnologico(objetoTecnologico.getMarca(),objetoTecnologico.getModelo()) == null){
+            this.objetoTecnologicos.add(objetoTecnologico);
             return true;
         }
         else{
@@ -94,22 +95,32 @@ public class TiendaTecnologica {
         }
     }
 
-    public Cliente buscarCliente(String apellido, String nombre){
-        for(Cliente cliente : this.clientes){
-            if(cliente.getNombre().equals(nombre) && cliente.getApellido().equals(apellido)){
-                return cliente;
+    public ObjetoTecnologico buscarObjetoTecnologico(String marca, String modelo){
+        for(ObjetoTecnologico objetoTecnologico : this.objetoTecnologicos){
+            if(objetoTecnologico.getMarca().equals(marca) && objetoTecnologico.getPrecio().equals(modelo)){
+                return objetoTecnologico;
             }
         }
         return null;
     }
-    public List buscarCliente(String nombre, String alexis, String raul){
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        for(Cliente cliente : this.clientes){
-            if(cliente.getNombre().equals(nombre)){
-                clientes.add(cliente);
+    public List buscarObjetoTecnologicoMarca(String marca, String Samsung, String Nokia){
+        ArrayList<ObjetoTecnologico> objetoTecnologicos = new ArrayList<>();
+        for(ObjetoTecnologico objetoTecnologico : this.objetoTecnologicos){
+            if(objetoTecnologico.getMarca().equals(objetoTecnologico)){
+                objetoTecnologicos.add(objetoTecnologico);
             }
         }
-        return clientes;
+        return objetoTecnologicos;
+    }
+
+    public List buscarObjetoTecnologicoModelo(String modelo, String P400, String Tuf15){
+        ArrayList<ObjetoTecnologico> objetoTecnologicos = new ArrayList<>();
+        for(ObjetoTecnologico objetoTecnologico : this.objetoTecnologicos){
+            if(objetoTecnologico.getModelo().equals(objetoTecnologico)){
+                objetoTecnologicos.add(objetoTecnologico);
+            }
+        }
+        return objetoTecnologicos;
     }
 
 
